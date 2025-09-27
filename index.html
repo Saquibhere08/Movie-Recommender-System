@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interactive Movie Recommender</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="topbar">
+    <div class="brand">Movie Recommender</div>
+    <div class="controls">
+      <div class="search-wrap">
+        <input id="searchInput" class="input" placeholder="Search movies..." autocomplete="off" />
+        <div id="suggestions" class="suggestions"></div>
+      </div>
+      <select id="sortSelect" class="select">
+        <option value="popularity.desc">Sort: Popularity</option>
+        <option value="vote_average.desc">Sort: Rating</option>
+        <option value="release_date.desc">Sort: Newest</option>
+      </select>
+      <label class="toggle">
+        <input id="favOnly" type="checkbox" />
+        <span>Favorites</span>
+      </label>
+      <button id="themeBtn" class="btn">Theme</button>
+    </div>
+  </nav>
+
+  <section class="filters">
+    <div id="genreChips" class="chips"></div>
+  </section>
+
+  <main class="main">
+    <div id="grid" class="grid"></div>
+
+    <template id="skeletonCard">
+      <article class="card skeleton">
+        <div class="poster-skel skeleton-box"></div>
+        <div class="meta">
+          <div class="line skeleton-box"></div>
+          <div class="line skeleton-box short"></div>
+        </div>
+      </article>
+    </template>
+
+    <div id="sentinel"></div>
+  </main>
+
+  <dialog id="detailsModal" class="modal">
+    <div class="modal-body">
+      <button id="closeModal" class="icon-btn" aria-label="Close">×</button>
+      <img id="modalPoster" class="modal-poster" alt="" />
+      <div class="modal-info">
+        <h2 id="modalTitle"></h2>
+        <p id="modalMeta" class="muted"></p>
+        <p id="modalOverview"></p>
+        <div class="actions">
+          <div id="modalStars" class="stars" aria-label="Rate"></div>
+          <button id="modalFav" class="btn">Add to favorites</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
